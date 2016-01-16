@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
+class MainViewController: UIPageViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,18 +25,15 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
             loginViewController.signUpController?.delegate = self
             self.presentViewController(loginViewController, animated: false, completion: nil)
         } else {
-            self.performSegueWithIdentifier("pushTableView", sender: self)
         }
     }
     
     func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        self.performSegueWithIdentifier("pushTableView", sender: self)
     }
     
     func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        self.performSegueWithIdentifier("pushTableView", sender: self)
     }
     
     func presentLoggedInAlert() {
