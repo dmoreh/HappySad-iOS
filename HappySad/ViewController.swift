@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIPageViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
+class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,8 @@ class MainViewController: UIPageViewController, PFLogInViewControllerDelegate, P
             loginViewController.signUpController?.delegate = self
             self.presentViewController(loginViewController, animated: false, completion: nil)
         } else {
+            // Get all Posts from Parse. Store them in an ivar. Order by date. Make sure there's one for today.
+            // Show today. 
         }
     }
     
