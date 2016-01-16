@@ -11,6 +11,7 @@ import UIKit
 class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     var posts: [Post]!
+    var index: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,8 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
             postsQuery.whereKey("user", equalTo: PFUser.currentUser()!)
             postsQuery.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error: NSError?) -> Void in
                 self.posts = objects as? [Post] ?? []
+                self.index = self.posts.count - 1
+                
                 for post in self.posts {
                     print(post)
                 }
@@ -76,20 +79,32 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         print("previous")
-        let vc = UIViewController()
-        let view = UIView(frame: CGRectMake(100,100,100,100))
-        view.backgroundColor = UIColor.blueColor()
-        vc.view = view
-        return vc
+        
+        // None left, don't scroll.
+        if self.index == 0 {
+            return nil
+        }
+        
+        self.index = self.index - 1
+        let post: Post = self.posts![self.index!]
+        let postViewController = PostViewController()
+        postViewController.post = post
+        return postViewController
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         print("next")
-        let vc = UIViewController()
-        let view = UIView(frame: CGRectMake(100,100,100,100))
-        view.backgroundColor = UIColor.redColor()
-        vc.view = view
-        return vc
+        
+        // None left, don't scroll.
+        if self.index == self.posts.count {
+            return nil
+        }
+        
+        self.index = self.index + 1
+        let post: Post = self.posts![self.index!]
+        let postViewController = PostViewController()
+        postViewController.post = post
+        return postViewController
     }
 
 }
