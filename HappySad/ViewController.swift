@@ -8,13 +8,23 @@
 
 import UIKit
 
-class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
+class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     var posts: [Post]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.delegate = self
+        self.dataSource = self
+        
+        let vc = UIViewController()
+        let view = UIView(frame: CGRectMake(100,100,100,100))
+        view.backgroundColor = UIColor.redColor()
+        vc.view = view
+        
+        self.setViewControllers([vc], direction: .Forward, animated: false, completion: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -61,7 +71,26 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    // MARK: - UIPageViewControllerDataSource
+    
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+        print("previous")
+        let vc = UIViewController()
+        let view = UIView(frame: CGRectMake(100,100,100,100))
+        view.backgroundColor = UIColor.blueColor()
+        vc.view = view
+        return vc
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        print("next")
+        let vc = UIViewController()
+        let view = UIView(frame: CGRectMake(100,100,100,100))
+        view.backgroundColor = UIColor.redColor()
+        vc.view = view
+        return vc
+    }
 
 }
 
