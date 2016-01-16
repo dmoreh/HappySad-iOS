@@ -46,6 +46,11 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
                 self.posts = objects as? [Post] ?? []
                 self.index = self.posts.count - 1
                 
+                let post = self.posts.last!
+                let postViewController = PostViewController()
+                postViewController.post = post
+                self.setViewControllers([postViewController], direction: .Forward, animated: false, completion: nil)
+
                 for post in self.posts {
                     print(post)
                 }
@@ -96,7 +101,7 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
         print("next")
         
         // None left, don't scroll.
-        if self.index == self.posts.count {
+        if self.index == self.posts.count - 1 {
             return nil
         }
         
