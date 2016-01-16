@@ -10,6 +10,8 @@ import UIKit
 
 class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
     
+    var posts: [Post]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -27,6 +29,14 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
         } else {
             // Get all Posts from Parse. Store them in an ivar. Order by date. Make sure there's one for today.
             // Show today. 
+            let postsQuery = Post.query()!
+            postsQuery.whereKey("user", equalTo: PFUser.currentUser()!)
+            postsQuery.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error: NSError?) -> Void in
+                self.posts = objects as? [Post] ?? []
+                for post in self.posts {
+                    print(post)
+                }
+            }
         }
     }
     
