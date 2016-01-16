@@ -20,10 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFTwitterUtils.initializeWithConsumerKey("TNGe3dBt6I27J62lUMmBVoYKE", consumerSecret:"DImmZP7XwRetr8bAui69BzPQMOL5ZPBGTWJbpTskga3v80dn64")
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions);
         
+        let acl = PFACL()
+        acl.publicReadAccess = true
+        PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
+        
         return true
     }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 

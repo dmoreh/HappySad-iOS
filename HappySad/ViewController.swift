@@ -25,18 +25,18 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
             loginViewController.signUpController?.delegate = self
             self.presentViewController(loginViewController, animated: false, completion: nil)
         } else {
-            presentLoggedInAlert()
+            self.performSegueWithIdentifier("pushTableView", sender: self)
         }
     }
     
     func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        presentLoggedInAlert()
+        self.performSegueWithIdentifier("pushTableView", sender: self)
     }
     
     func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        presentLoggedInAlert()
+        self.performSegueWithIdentifier("pushTableView", sender: self)
     }
     
     func presentLoggedInAlert() {

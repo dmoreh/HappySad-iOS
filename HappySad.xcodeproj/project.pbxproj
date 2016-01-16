@@ -15,6 +15,8 @@
 		ED0E48061C4A61720063CD6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0E48041C4A61720063CD6F /* LaunchScreen.storyboard */; };
 		ED0E48111C4A61720063CD6F /* HappySadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E48101C4A61720063CD6F /* HappySadTests.swift */; };
 		ED0E481C1C4A61720063CD6F /* HappySadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E481B1C4A61720063CD6F /* HappySadUITests.swift */; };
+		ED31B6C51C4AEE2400281F30 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31B6C41C4AEE2400281F30 /* TestTableViewController.swift */; };
+		ED31B6C81C4AF07100281F30 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31B6C71C4AF07100281F30 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		ED0E481B1C4A61720063CD6F /* HappySadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappySadUITests.swift; sourceTree = "<group>"; };
 		ED0E481D1C4A61720063CD6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED19E04C1C4A641000C6465C /* HappySad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HappySad-Bridging-Header.h"; sourceTree = "<group>"; };
+		ED31B6C41C4AEE2400281F30 /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
+		ED31B6C71C4AF07100281F30 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 		ED0E47FA1C4A61710063CD6F /* HappySad */ = {
 			isa = PBXGroup;
 			children = (
+				ED31B6C61C4AF04A00281F30 /* Models */,
 				ED0E47FB1C4A61710063CD6F /* AppDelegate.swift */,
 				ED0E47FD1C4A61710063CD6F /* ViewController.swift */,
 				ED0E47FF1C4A61710063CD6F /* Main.storyboard */,
@@ -129,6 +134,7 @@
 				ED0E48041C4A61720063CD6F /* LaunchScreen.storyboard */,
 				ED0E48071C4A61720063CD6F /* Info.plist */,
 				ED19E04C1C4A641000C6465C /* HappySad-Bridging-Header.h */,
+				ED31B6C41C4AEE2400281F30 /* TestTableViewController.swift */,
 			);
 			path = HappySad;
 			sourceTree = "<group>";
@@ -149,6 +155,14 @@
 				ED0E481D1C4A61720063CD6F /* Info.plist */,
 			);
 			path = HappySadUITests;
+			sourceTree = "<group>";
+		};
+		ED31B6C61C4AF04A00281F30 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED31B6C71C4AF07100281F30 /* Post.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +349,8 @@
 			files = (
 				ED0E47FE1C4A61710063CD6F /* ViewController.swift in Sources */,
 				ED0E47FC1C4A61710063CD6F /* AppDelegate.swift in Sources */,
+				ED31B6C51C4AEE2400281F30 /* TestTableViewController.swift in Sources */,
+				ED31B6C81C4AF07100281F30 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
