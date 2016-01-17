@@ -49,11 +49,13 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
                 let post = self.posts.last!
                 let postViewController = PostViewController()
                 postViewController.post = post
-                self.setViewControllers([postViewController], direction: .Forward, animated: false, completion: nil)
-
                 for post in self.posts {
                     print(post)
                 }
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.setViewControllers([postViewController], direction: .Forward, animated: false, completion: nil)
+                })
             }
         }
     }

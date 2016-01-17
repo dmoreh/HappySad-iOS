@@ -12,15 +12,14 @@ class PostViewController: UIViewController {
 
     var post: Post? {
         didSet {
-            postView.post = post
+            postView?.post = post
         }
     }
-    @IBOutlet var postView: PostView!
+    @IBOutlet var postView: PostView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        post = Post()
-        postView.delegate = self
+        postView?.delegate = self
         // Do any additional setup after loading the view.
     }
 
