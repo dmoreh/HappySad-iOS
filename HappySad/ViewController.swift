@@ -42,11 +42,20 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
             postsQuery.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error: NSError?) -> Void in
                 self.posts = objects as? [Post] ?? []
                 
-                let post = self.posts.last!
+                var post = self.posts.last!
+
+                // If we don't have one for today, make one.
+                if !NSCalendar.currentCalendar().isDateInToday(post.day!) {
+                    post = Post()
+                    post.day = NSDate()
+                    self.posts.append(post)
+                }
+                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let postViewController = storyboard.instantiateViewControllerWithIdentifier("PostViewController") as! PostViewController
                 postViewController.post = post
                 postViewController.pageIndex = self.posts.count - 1
+                
                 for post in self.posts {
                     print(post)
                 }
