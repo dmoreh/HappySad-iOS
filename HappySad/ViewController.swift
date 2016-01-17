@@ -47,7 +47,8 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
                 self.index = self.posts.count - 1
                 
                 let post = self.posts.last!
-                let postViewController = PostViewController()
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let postViewController = storyboard.instantiateViewControllerWithIdentifier("PostViewController") as! PostViewController
                 postViewController.post = post
                 for post in self.posts {
                     print(post)
@@ -94,7 +95,9 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
         
         self.index = self.index - 1
         let post: Post = self.posts![self.index!]
-        let postViewController = PostViewController()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let postViewController = storyboard.instantiateViewControllerWithIdentifier("PostViewController") as! PostViewController
         postViewController.post = post
         return postViewController
     }
@@ -109,7 +112,9 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
         
         self.index = self.index + 1
         let post: Post = self.posts![self.index!]
-        let postViewController = PostViewController()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let postViewController = storyboard.instantiateViewControllerWithIdentifier("PostViewController") as! PostViewController
         postViewController.post = post
         return postViewController
     }
