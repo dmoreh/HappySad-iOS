@@ -35,8 +35,7 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
             loginViewController.signUpController?.delegate = self
             self.presentViewController(loginViewController, animated: false, completion: nil)
         } else {
-            // Get all Posts from Parse. Store them in an ivar. Order by date. Make sure there's one for today.
-            // Show today. 
+            // Get all Posts from Parse.
             let postsQuery = Post.query()!
             postsQuery.whereKey("user", equalTo: PFUser.currentUser()!)
             postsQuery.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error: NSError?) -> Void in
