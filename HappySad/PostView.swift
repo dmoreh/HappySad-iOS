@@ -9,6 +9,7 @@
 import UIKit
 
 protocol PostViewDelegateProtocol {
+    var post: Post? { get }
     func savePost(post: Post)
 }
 
@@ -33,9 +34,15 @@ class PostView: UIView {
         return dayTimePeriodFormatter.stringFromDate(date)
     }
     
-    @IBAction func saveButtonTapped(sender: UIButton) {
+    func copyOverStrings() {
+        print("copyOverStrings")
         post?.goodThing = happyTextField.text
         post?.badThing = sadTextField.text
+    }
+    
+    @IBAction func saveButtonTapped(sender: UIButton) {
+        copyOverStrings()
         delegate?.savePost(post!)
     }
+
 }

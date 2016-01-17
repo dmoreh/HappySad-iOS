@@ -34,7 +34,12 @@ class Post : PFObject, PFSubclassing {
     }
     
     func uploadPost() {
+        print("saving post")
         user = PFUser.currentUser()
         saveInBackgroundWithBlock(nil)
+    }
+    
+    func hasSameTextAsPost(otherPost: Post) -> Bool {
+        return goodThing == otherPost.goodThing && badThing == otherPost.badThing
     }
 }

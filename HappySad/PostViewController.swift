@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostViewController: UIViewController {
+class PostViewController: UIViewController, UITextFieldDelegate {
 
     var post: Post? {
         didSet {
@@ -17,12 +17,21 @@ class PostViewController: UIViewController {
     }
     @IBOutlet var postView: PostView?
     var pageIndex: Int?
+    var timer: NSTimer?
+    
+    @IBOutlet var happyTextField: UITextField!
+    @IBOutlet var sadTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         postView?.delegate = self
         postView?.post = post
-        // Do any additional setup after loading the view.
+
+        happyTextField.delegate = self
+        sadTextField.delegate = self
+        
+        happyTextField.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
+        sadTextField.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,17 +39,31 @@ class PostViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillDisappear(animated: Bool) {
+        savePost()
     }
-    */
+    
+    func savePost() {
+        print("savePost called")
+//        if let myPost = post,
+//            postView = postView,
+//            otherPost = postView.post{
+//                postView.copyOverStrings()
+//                otherPost.uploadPost()
+//        }
+    }
 
+    func resetTimer() {
+        print("resetting timer")
+        if let timer = timer {
+            if timer.valid {
+                timer.invalidate()
+            }
+        }
+        timer = NSTimer(timeInterval: 5, target: self, selector: Selector("savePost"), userInfo: nil, repeats: false)
+        
+        NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSDefaultRunLoopMode)
+    }
 }
 
 extension PostViewController: PostViewDelegateProtocol {
