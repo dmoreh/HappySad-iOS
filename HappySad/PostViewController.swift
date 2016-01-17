@@ -10,11 +10,17 @@ import UIKit
 
 class PostViewController: UIViewController {
 
-    var post: Post?
+    var post: Post? {
+        didSet {
+            postView.post = post
+        }
+    }
+    @IBOutlet var postView: PostView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        post = Post()
+        postView.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -34,4 +40,10 @@ class PostViewController: UIViewController {
     }
     */
 
+}
+
+extension PostViewController: PostViewDelegateProtocol {
+    func savePostSignal() {
+        post?.uploadPost()
+    }
 }

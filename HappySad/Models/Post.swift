@@ -24,6 +24,7 @@ class Post : PFObject, PFSubclassing {
     
     override init () {
         super.init()
+        day = NSDate()
     }
     
     override class func initialize() {
