@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
     
     var posts: [Post]!
     var index: Int!
@@ -16,8 +16,6 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        self.delegate = self
         self.dataSource = self
         
         let vc = UIViewController()
@@ -82,8 +80,9 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // MARK: - UIPageViewControllerDataSource
+}
+
+extension MainPageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         print("previous")
@@ -118,6 +117,4 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
         postViewController.post = post
         return postViewController
     }
-
 }
-
