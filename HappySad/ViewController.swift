@@ -11,7 +11,6 @@ import UIKit
 class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
     
     var posts: [Post]!
-    var index: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,12 +41,12 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
             postsQuery.whereKey("user", equalTo: PFUser.currentUser()!)
             postsQuery.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error: NSError?) -> Void in
                 self.posts = objects as? [Post] ?? []
-                self.index = self.posts.count - 1
                 
                 let post = self.posts.last!
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let postViewController = storyboard.instantiateViewControllerWithIdentifier("PostViewController") as! PostViewController
                 postViewController.post = post
+                postViewController.pageIndex = self.posts.count - 1
                 for post in self.posts {
                     print(post)
                 }
@@ -87,34 +86,42 @@ extension MainPageViewController: UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         print("previous")
         
+        let currentVC: PostViewController = viewController as! PostViewController
+        let currentIndex = currentVC.pageIndex
+        
         // None left, don't scroll.
-        if self.index == 0 {
+        if currentIndex == 0 {
             return nil
         }
         
-        self.index = self.index - 1
-        let post: Post = self.posts![self.index!]
+        let newIndex = currentIndex! - 1
+        let post: Post = self.posts![newIndex]
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let postViewController = storyboard.instantiateViewControllerWithIdentifier("PostViewController") as! PostViewController
         postViewController.post = post
+        postViewController.pageIndex = newIndex
         return postViewController
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         print("next")
         
+        let currentVC: PostViewController = viewController as! PostViewController
+        let currentIndex = currentVC.pageIndex
+        
         // None left, don't scroll.
-        if self.index == self.posts.count - 1 {
+        if currentIndex! == self.posts.count - 1 {
             return nil
         }
         
-        self.index = self.index + 1
-        let post: Post = self.posts![self.index!]
+        let newIndex = currentIndex! + 1
+        let post: Post = self.posts![newIndex]
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let postViewController = storyboard.instantiateViewControllerWithIdentifier("PostViewController") as! PostViewController
         postViewController.post = post
+        postViewController.pageIndex = newIndex
         return postViewController
     }
 }
