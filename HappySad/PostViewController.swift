@@ -20,6 +20,7 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         postView?.delegate = self
+        postView?.post = post
         // Do any additional setup after loading the view.
     }
 
@@ -42,7 +43,7 @@ class PostViewController: UIViewController {
 }
 
 extension PostViewController: PostViewDelegateProtocol {
-    func savePostSignal() {
-        post?.uploadPost()
+    func savePost(post: Post) {
+        post.uploadPost()
     }
 }

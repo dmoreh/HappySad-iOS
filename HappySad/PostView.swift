@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PostViewDelegateProtocol {
-    func savePostSignal()
+    func savePost(post: Post)
 }
 
 class PostView: UIView {
@@ -36,6 +36,6 @@ class PostView: UIView {
     @IBAction func saveButtonTapped(sender: UIButton) {
         post?.goodThing = happyTextField.text
         post?.badThing = sadTextField.text
-        delegate?.savePostSignal()
+        delegate?.savePost(post!)
     }
 }
