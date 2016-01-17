@@ -27,6 +27,7 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
         if (PFUser.currentUser() == nil) {
             let loginViewController = PFLogInViewController()
             loginViewController.delegate = self
@@ -66,6 +67,14 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
                 dispatch_async(dispatch_get_main_queue(), {
                     self.setViewControllers([postViewController], direction: .Forward, animated: false, completion: nil)
                 })
+            }
+        }
+
+        let configQuery = PFQuery(className: "Config")
+        configQuery.findObjectsInBackgroundWithBlock { (configs: [PFObject]?, error: NSError?) -> Void in
+            if let maxWordsConfig = configs?.last {
+                let maxWords = maxWordsConfig["maxWords"]
+                NSUserDefaults.standardUserDefaults().setInteger(maxWords as! Int, forKey: "maxWords")
             }
         }
     }

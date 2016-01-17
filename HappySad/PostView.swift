@@ -44,5 +44,4 @@ class PostView: UIView {
         copyOverStrings()
         delegate?.savePost(post!)
     }
-
 }

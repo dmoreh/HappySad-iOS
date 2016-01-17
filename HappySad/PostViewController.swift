@@ -18,7 +18,8 @@ class PostViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var postView: PostView?
     var pageIndex: Int?
     var timer: NSTimer?
-    
+    var maxWords: Int = NSUserDefaults.standardUserDefaults().integerForKey("maxWords")
+
     @IBOutlet var happyTextField: UITextField!
     @IBOutlet var sadTextField: UITextField!
     
@@ -26,10 +27,10 @@ class PostViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         postView?.delegate = self
         postView?.post = post
-
+        
         happyTextField.delegate = self
         sadTextField.delegate = self
-        
+
         happyTextField.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
         sadTextField.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
     }
@@ -64,6 +65,13 @@ class PostViewController: UIViewController, UITextFieldDelegate {
         
         NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSDefaultRunLoopMode)
     }
+ 
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let newString: String = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        let wordCount = newString.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).count
+ 
+        return wordCount <= self.maxWords
+    }
 }
 
 extension PostViewController: PostViewDelegateProtocol {
@@ -71,3 +79,4 @@ extension PostViewController: PostViewDelegateProtocol {
         post.uploadPost()
     }
 }
+
