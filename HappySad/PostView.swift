@@ -29,7 +29,7 @@ class PostView: UIView {
     
     func stringFromDate(date: NSDate) -> String {
         let dayTimePeriodFormatter = NSDateFormatter()
-        dayTimePeriodFormatter.dateFormat = "EEEE, d/M/YY"
+        dayTimePeriodFormatter.dateFormat = "EEEE, M/d/YY"
         return dayTimePeriodFormatter.stringFromDate(date)
     }
     

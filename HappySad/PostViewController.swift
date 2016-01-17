@@ -16,6 +16,7 @@ class PostViewController: UIViewController {
         }
     }
     @IBOutlet var postView: PostView?
+    var pageIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
