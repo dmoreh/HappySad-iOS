@@ -44,9 +44,14 @@ class PostViewController: UIViewController, UITextViewDelegate {
         postView!.sadTextView.placeholderColor = colorScheme.placeholderColor
         postView!.sadUnderlineView.backgroundColor = colorScheme.tintColor
         
-        postView!.submitButton.tintColor = colorScheme.buttonTextColor
-        postView!.submitButton.backgroundColor = colorScheme.tintColor
+        postView!.submitButton.backgroundColor = colorScheme.backgroundColor
+        postView!.submitButton.tintColor = colorScheme.tintColor
 
+        // Hack for first one to start dirty.
+        if colorScheme.tintColor == ColorScheme.blackColorScheme().tintColor {
+            postView!.submitButton.tintColor = colorScheme.buttonTextColor
+            postView!.submitButton.backgroundColor = colorScheme.tintColor
+        }
 
         // For autosaving. Lost during the textField -> textView refactor.
 //        happyTextView.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
@@ -92,11 +97,19 @@ class PostViewController: UIViewController, UITextViewDelegate {
         
         return wordCount <= self.maxWords
     }
+    
+    func textViewDidChange(textView: UITextView) {
+        postView!.submitButton.tintColor = colorScheme.buttonTextColor
+        postView!.submitButton.backgroundColor = colorScheme.tintColor
+    }
 }
 
 extension PostViewController: PostViewDelegateProtocol {
     func savePost(post: Post) {
         post.uploadPost()
+        
+        postView!.submitButton.backgroundColor = colorScheme.backgroundColor
+        postView!.submitButton.tintColor = colorScheme.tintColor
     }
 }
 
