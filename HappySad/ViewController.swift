@@ -38,6 +38,7 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
             // Get all Posts from Parse.
             let postsQuery = Post.query()!
             postsQuery.whereKey("user", equalTo: PFUser.currentUser()!)
+            postsQuery.orderByAscending("day")
             postsQuery.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error: NSError?) -> Void in
                 self.posts = objects as? [Post] ?? []
                 
