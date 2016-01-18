@@ -28,7 +28,7 @@ class ColorScheme: NSObject {
             textColor: UIColor.whiteColor(),
             tintColor: self.blueColor(),
             placeholderColor: UIColor.grayColor(),
-            buttonTextColor: UIColor.whiteColor()
+            buttonTextColor: self.blackColor()
         )
     }
     
@@ -38,7 +38,7 @@ class ColorScheme: NSObject {
             textColor: UIColor.whiteColor(),
             tintColor: UIColor.yellowColor(),
             placeholderColor: UIColor.grayColor(),
-            buttonTextColor: UIColor.blackColor()
+            buttonTextColor: self.blackColor()
         )
     }
     
@@ -48,7 +48,7 @@ class ColorScheme: NSObject {
             textColor: UIColor.whiteColor(),
             tintColor: UIColor.orangeColor(),
             placeholderColor: UIColor.grayColor(),
-            buttonTextColor: UIColor.blackColor()
+            buttonTextColor: self.blackColor()
         )
     }
     
@@ -58,12 +58,27 @@ class ColorScheme: NSObject {
             textColor: UIColor.whiteColor(),
             tintColor: UIColor.purpleColor(),
             placeholderColor: UIColor.grayColor(),
-            buttonTextColor: UIColor.whiteColor()
+            buttonTextColor: self.blackColor()
+        )
+    }
+    
+    class func blackGreenColorScheme() -> ColorScheme {
+        return ColorScheme(
+            backgroundColor: self.blackColor(),
+            textColor: UIColor.whiteColor(),
+            tintColor: UIColor.greenColor(),
+            placeholderColor: UIColor.grayColor(),
+            buttonTextColor: self.blackColor()
         )
     }
     
     class func randomColorScheme() -> ColorScheme {
-        let schemes = [blackYellowColorScheme(), blackOrangeColorScheme(), blackPurpleColorScheme()]
+        let schemes = [
+            blackYellowColorScheme(),
+            blackOrangeColorScheme(),
+            blackPurpleColorScheme(),
+            blackGreenColorScheme(),
+        ]
         let randomIndex = Int(arc4random_uniform(UInt32(schemes.count)))
         return schemes[randomIndex]
     }
