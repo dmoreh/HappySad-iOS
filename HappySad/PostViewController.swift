@@ -36,11 +36,13 @@ class PostViewController: UIViewController, UITextViewDelegate {
         postView!.happyTextView.textColor = colorScheme.textColor
         postView!.happyTextView.placeholder = "What was the best moment of your day?"
         postView!.happyTextView.placeholderColor = colorScheme.placeholderColor
+        postView!.happyUnderlineView.backgroundColor = colorScheme.tintColor
         
         postView!.sadTextView.textColor = colorScheme.textColor
         postView!.sadTextView.tintColor = colorScheme.tintColor
         postView!.sadTextView.placeholder = "What was the worst moment of your day?"
         postView!.sadTextView.placeholderColor = colorScheme.placeholderColor
+        postView!.sadUnderlineView.backgroundColor = colorScheme.tintColor
         
         postView!.submitButton.tintColor = colorScheme.buttonTextColor
         postView!.submitButton.backgroundColor = colorScheme.tintColor

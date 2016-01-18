@@ -28,6 +28,8 @@ class PostView: UIView {
     @IBOutlet var happyTextView: UITextView!
     @IBOutlet var sadTextView: UITextView!
     @IBOutlet var submitButton: UIButton!
+    @IBOutlet var happyUnderlineView: UIView!
+    @IBOutlet var sadUnderlineView: UIView!
     
     override func layoutSubviews() {
         super.layoutSubviews()
