@@ -15,7 +15,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
         }
     }
     @IBOutlet var postView: PostView?
-    var colorScheme: ColorScheme = ColorScheme.blackColorScheme()
+    var colorScheme: ColorScheme = ColorScheme.randomColorScheme()
     var pageIndex: Int?
     var timer: NSTimer?
     var maxWords: Int = NSUserDefaults.standardUserDefaults().integerForKey("maxWords")

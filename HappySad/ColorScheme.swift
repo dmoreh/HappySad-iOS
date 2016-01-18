@@ -32,6 +32,12 @@ class ColorScheme: NSObject {
         )
     }
     
+    class func randomColorScheme() -> ColorScheme {
+        let schemes = [blackColorScheme()]
+        let randomIndex = Int(arc4random_uniform(UInt32(schemes.count)))
+        return schemes[randomIndex]
+    }
+    
     private class func blackColor() -> UIColor {
         return UIColor(colorLiteralRed: 32/255, green: 32/255, blue: 32/255, alpha: 1)
     }
