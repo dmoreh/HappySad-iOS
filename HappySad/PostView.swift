@@ -32,6 +32,8 @@ class PostView: UIView {
     @IBOutlet var submitButton: UIButton!
     @IBOutlet var happyCounter: UILabel!
     @IBOutlet var sadCounter: UILabel!
+    @IBOutlet var happyUnderlineView: UIView!
+    @IBOutlet var sadUnderlineView: UIView!
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -73,5 +75,6 @@ class PostView: UIView {
     @IBAction func saveButtonTapped(sender: UIButton) {
         copyOverStrings()
         delegate?.savePost(post!)
+        self.endEditing(true)
     }
 }

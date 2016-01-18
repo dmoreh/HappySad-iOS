@@ -58,6 +58,7 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
                 let postViewController = storyboard.instantiateViewControllerWithIdentifier("PostViewController") as! PostViewController
                 postViewController.post = currentPost!
                 postViewController.pageIndex = self.posts.count - 1
+                postViewController.colorScheme = ColorScheme.blackColorScheme()
                 
                 for post in self.posts {
                     print(post)

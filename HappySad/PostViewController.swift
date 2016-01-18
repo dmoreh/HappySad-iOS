@@ -15,7 +15,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
         }
     }
     @IBOutlet var postView: PostView?
-    var colorScheme: ColorScheme = ColorScheme.blackColorScheme()
+    var colorScheme: ColorScheme = ColorScheme.randomColorScheme()
     var pageIndex: Int?
     var timer: NSTimer?
     var maxWords: Int = NSUserDefaults.standardUserDefaults().integerForKey("maxWords")
@@ -36,18 +36,28 @@ class PostViewController: UIViewController, UITextViewDelegate {
         postView!.happyTextView.textColor = colorScheme.textColor
         postView!.happyTextView.placeholder = "What was the best moment of your day?"
         postView!.happyTextView.placeholderColor = colorScheme.placeholderColor
+        postView!.happyUnderlineView.backgroundColor = colorScheme.tintColor
         
         postView!.sadTextView.textColor = colorScheme.textColor
         postView!.sadTextView.tintColor = colorScheme.tintColor
         postView!.sadTextView.placeholder = "What was the worst moment of your day?"
         postView!.sadTextView.placeholderColor = colorScheme.placeholderColor
+        postView!.sadUnderlineView.backgroundColor = colorScheme.tintColor
         
         postView!.submitButton.tintColor = colorScheme.buttonTextColor
         postView!.submitButton.backgroundColor = colorScheme.tintColor
         
         postView!.happyCounter.textColor = colorScheme.textColor
         postView!.sadCounter.textColor = colorScheme.textColor
+        
+        postView!.submitButton.backgroundColor = colorScheme.backgroundColor
+        postView!.submitButton.tintColor = colorScheme.tintColor
 
+        // Hack for first one to start dirty.
+        if colorScheme.tintColor == ColorScheme.blackColorScheme().tintColor {
+            postView!.submitButton.tintColor = colorScheme.buttonTextColor
+            postView!.submitButton.backgroundColor = colorScheme.tintColor
+        }
 
         // For autosaving. Lost during the textField -> textView refactor.
 //        happyTextView.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
@@ -102,11 +112,19 @@ class PostViewController: UIViewController, UITextViewDelegate {
         
         return false
     }
+    
+    func textViewDidChange(textView: UITextView) {
+        postView!.submitButton.tintColor = colorScheme.buttonTextColor
+        postView!.submitButton.backgroundColor = colorScheme.tintColor
+    }
 }
 
 extension PostViewController: PostViewDelegateProtocol {
     func savePost(post: Post) {
         post.uploadPost()
+        
+        postView!.submitButton.backgroundColor = colorScheme.backgroundColor
+        postView!.submitButton.tintColor = colorScheme.tintColor
     }
 }
 
