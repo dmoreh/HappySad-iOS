@@ -10,17 +10,26 @@ import UIKit
 
 class LoginViewController : PFLogInViewController {
     
-    var backgroundImage : UIImageView!;
-    var viewsToAnimate: [UIView!]!;
-    var viewsFinalYPosition : [CGFloat]!;
+    var backgroundImage : UIImageView!
+    var viewsToAnimate: [UIView!]!
+    var viewsFinalYPosition : [CGFloat]!
+    
+    // Colors
+    let seeThroughColor = UIColor(red: 255/255, green: 253/255, blue: 243/255, alpha: 0.9)
+    let darkBlueColor   = UIColor(red: 14/255, green: 28/255, blue: 87/255, alpha: 1)
+    let lightBlueColor  = UIColor(red: 97/255, green: 187/255, blue: 223/255, alpha: 1)
+    let greyColor       = UIColor(red: 90/255, green: 90/255, blue: 90/255, alpha: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // sign up view controller
+        self.signUpController = SignUpViewController()
+        
         // set our logo
         let logo = UILabel()
         logo.text = "Day to Day"
-        logo.textColor = UIColor(red: 14/255, green: 28/255, blue: 87/255, alpha: 1)
+        logo.textColor = darkBlueColor
         logo.font = UIFont(name: "HelveticaNeue-Thin", size: 60)
         
         logInView?.logo = logo
@@ -32,10 +41,10 @@ class LoginViewController : PFLogInViewController {
         
         // login button
         logInView?.logInButton?.setBackgroundImage(nil, forState: .Normal)
-        logInView?.logInButton?.backgroundColor = UIColor(red: 97/255, green: 187/255, blue: 223/255, alpha: 1)
+        logInView?.logInButton?.backgroundColor = darkBlueColor
         
         // forgot password
-        logInView?.passwordForgottenButton?.setTitleColor(UIColor(red: 14/255, green: 28/255, blue: 87/255, alpha: 1), forState: .Normal)
+        logInView?.passwordForgottenButton?.setTitleColor(darkBlueColor, forState: .Normal)
         
         // make the buttons classier
         customizeButton(logInView?.facebookButton!)
@@ -43,11 +52,11 @@ class LoginViewController : PFLogInViewController {
         customizeButton(logInView?.signUpButton!)
         
         // make fields slightly see-through
-        logInView?.usernameField?.backgroundColor = UIColor(red: 255/255, green: 253/255, blue: 243/255, alpha: 0.9)
-        logInView?.passwordField?.backgroundColor = UIColor(red: 255/255, green: 253/255, blue: 243/255, alpha: 0.9)
+        logInView?.usernameField?.backgroundColor = seeThroughColor
+        logInView?.passwordField?.backgroundColor = seeThroughColor
         
-        let emailStr = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName:UIColor(red: 90/255, green: 90/255, blue: 90/255, alpha: 1)])
-        let passwordStr = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName:UIColor(red: 90/255, green: 90/255, blue: 90/255, alpha: 1)])
+        let emailStr = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName:greyColor])
+        let passwordStr = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName:greyColor])
         logInView?.usernameField?.attributedPlaceholder = emailStr
         logInView?.passwordField?.attributedPlaceholder = passwordStr
         
@@ -93,10 +102,10 @@ class LoginViewController : PFLogInViewController {
     
     func customizeButton(button: UIButton!) {
         button.setBackgroundImage(nil, forState: .Normal)
-        button.backgroundColor = UIColor(red: 14/255, green: 28/255, blue: 87/255, alpha: 1)
+        button.backgroundColor = darkBlueColor
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor(red: 14/255, green: 28/255, blue: 87/255, alpha: 1).CGColor
+        button.layer.borderColor = darkBlueColor.CGColor
         
         
     }

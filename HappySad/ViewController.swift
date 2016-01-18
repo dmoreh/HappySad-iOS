@@ -33,6 +33,7 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
             loginViewController.fields = [.UsernameAndPassword, .LogInButton, .PasswordForgotten, .SignUpButton, .Facebook, .Twitter]
             loginViewController.emailAsUsername = true
             loginViewController.signUpController?.delegate = self
+            loginViewController.signUpController?.emailAsUsername = true
             self.presentViewController(loginViewController, animated: false, completion: nil)
         } else {
             // Get all Posts from Parse.

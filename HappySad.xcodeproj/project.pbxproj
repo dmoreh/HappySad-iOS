@@ -21,6 +21,7 @@
 		ED31B6C81C4AF07100281F30 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31B6C71C4AF07100281F30 /* Post.swift */; };
 		ED31B6CA1C4B064000281F30 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31B6C91C4B064000281F30 /* PostView.swift */; };
 		ED97F85D1C4C70B800F9E85F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED97F85C1C4C70B800F9E85F /* LoginViewController.swift */; };
+		ED97F85F1C4CA22F00F9E85F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED97F85E1C4CA22F00F9E85F /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		ED31B6C71C4AF07100281F30 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		ED31B6C91C4B064000281F30 /* PostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		ED97F85C1C4C70B800F9E85F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		ED97F85E1C4CA22F00F9E85F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				ED31B6C41C4AEE2400281F30 /* TestTableViewController.swift */,
 				ED31B6C91C4B064000281F30 /* PostView.swift */,
 				ED97F85C1C4C70B800F9E85F /* LoginViewController.swift */,
+				ED97F85E1C4CA22F00F9E85F /* SignUpViewController.swift */,
 			);
 			path = HappySad;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				ED31B6C51C4AEE2400281F30 /* TestTableViewController.swift in Sources */,
 				9B6B96011C4C8A1000C86DFB /* ColorScheme.swift in Sources */,
 				ED31B6C81C4AF07100281F30 /* Post.swift in Sources */,
+				ED97F85F1C4CA22F00F9E85F /* SignUpViewController.swift in Sources */,
 				ED31B6CA1C4B064000281F30 /* PostView.swift in Sources */,
 				9B6788261C4B02B300EBCFE5 /* PostViewController.swift in Sources */,
 			);
