@@ -19,7 +19,6 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
         
         let vc = UIViewController()
         let view = UIView(frame: CGRectMake(100,100,100,100))
-        view.backgroundColor = UIColor.redColor()
         vc.view = view
         
         self.setViewControllers([vc], direction: .Forward, animated: false, completion: nil)
@@ -29,7 +28,7 @@ class MainPageViewController: UIPageViewController, PFLogInViewControllerDelegat
         super.viewDidAppear(animated)
         
         if (PFUser.currentUser() == nil) {
-            let loginViewController = PFLogInViewController()
+            let loginViewController = LoginViewController()
             loginViewController.delegate = self
             loginViewController.fields = [.UsernameAndPassword, .LogInButton, .PasswordForgotten, .SignUpButton, .Facebook, .Twitter]
             loginViewController.emailAsUsername = true
