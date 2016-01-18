@@ -63,7 +63,7 @@ class ColorScheme: NSObject {
     }
     
     class func randomColorScheme() -> ColorScheme {
-        let schemes = [blackColorScheme(), blackYellowColorScheme(), blackOrangeColorScheme(), blackPurpleColorScheme()]
+        let schemes = [blackYellowColorScheme(), blackOrangeColorScheme(), blackPurpleColorScheme()]
         let randomIndex = Int(arc4random_uniform(UInt32(schemes.count)))
         return schemes[randomIndex]
     }
