@@ -5,4 +5,5 @@ target 'HappySad' do
     pod 'ParseTwitterUtils'
     pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'
+    pod 'UITextView+Placeholder'
 end
