@@ -8,7 +8,9 @@
 
 import UIKit
 
-class PostViewController: UIViewController, UITextFieldDelegate {
+class PostViewController: UIViewController, UITextViewDelegate {
+    var backgroundColor = UIColor(colorLiteralRed: 32/255, green: 32/255, blue: 32/255, alpha: 1) // Black
+    var tintColor = UIColor(colorLiteralRed: 74/255, green: 144/255, blue: 226/255, alpha: 1) // Blue
 
     var post: Post? {
         didSet {
@@ -18,20 +20,22 @@ class PostViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var postView: PostView?
     var pageIndex: Int?
     var timer: NSTimer?
-    
-    @IBOutlet var happyTextField: UITextField!
-    @IBOutlet var sadTextField: UITextField!
+    var maxWords: Int = NSUserDefaults.standardUserDefaults().integerForKey("maxWords")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         postView?.delegate = self
         postView?.post = post
-
-        happyTextField.delegate = self
-        sadTextField.delegate = self
         
-        happyTextField.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
-        sadTextField.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
+        postView!.happyTextView.delegate = self
+        postView!.sadTextView.delegate = self
+        
+        view.backgroundColor = backgroundColor
+
+        // For autosaving. Lost during the textField -> textView refactor.
+//        happyTextView.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
+//        sadTextView.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +68,15 @@ class PostViewController: UIViewController, UITextFieldDelegate {
         
         NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSDefaultRunLoopMode)
     }
+ 
+    // MARK - UITextViewDelegate
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        let newString: String = (textView.text! as NSString).stringByReplacingCharactersInRange(range, withString: text)
+        let wordCount = newString.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).count
+        
+        return wordCount <= self.maxWords
+    }
 }
 
 extension PostViewController: PostViewDelegateProtocol {
@@ -71,3 +84,4 @@ extension PostViewController: PostViewDelegateProtocol {
         post.uploadPost()
     }
 }
+
