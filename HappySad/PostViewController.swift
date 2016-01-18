@@ -28,28 +28,29 @@ class PostViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         postView?.delegate = self
         postView?.post = post
         
-        self.postView!.happyTextView.delegate = self
-        self.postView!.sadTextView.delegate = self
+        postView!.happyTextView.delegate = self
+        postView!.sadTextView.delegate = self
         
         // UI
-        self.postView!.backgroundColor = UIColor.clearColor()
-        self.postView!.happyTextView.backgroundColor = UIColor.clearColor()
-        self.postView!.sadTextView.backgroundColor = UIColor.clearColor()
+        postView!.backgroundColor = UIColor.clearColor()
+        postView!.happyTextView.backgroundColor = UIColor.clearColor()
+        postView!.sadTextView.backgroundColor = UIColor.clearColor()
 
-        self.view.backgroundColor = self.backgroundColor
+        view.backgroundColor = backgroundColor
         
-        self.postView!.dayLabel.textColor = self.textColor
+        postView!.dayLabel.textColor = textColor
 
-        self.postView!.happyTextView.textColor = self.textColor
-        self.postView!.happyTextView.placeholder = "What was the best moment of your day?"
-        self.postView!.happyTextView.placeholderColor = self.placeholderColor
+        postView!.happyTextView.textColor = textColor
+        postView!.happyTextView.placeholder = "What was the best moment of your day?"
+        postView!.happyTextView.placeholderColor = placeholderColor
         
-        self.postView!.sadTextView.textColor = self.textColor
-        self.postView!.sadTextView.placeholder = "What was the worst moment of your day?"
-        self.postView!.sadTextView.placeholderColor = self.placeholderColor
+        postView!.sadTextView.textColor = textColor
+        postView!.sadTextView.placeholder = "What was the worst moment of your day?"
+        postView!.sadTextView.placeholderColor = placeholderColor
 
         // For autosaving. Lost during the textField -> textView refactor.
 //        happyTextView.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
