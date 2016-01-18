@@ -43,6 +43,12 @@ class PostView: UIView {
     }
     
     func stringFromDate(date: NSDate) -> String {
+        if NSCalendar.currentCalendar().isDateInToday(date) {
+            return "Today"
+        } else if NSCalendar.currentCalendar().isDateInToday(date.dateByAddingTimeInterval(60*60*24)) {
+            return "Yesterday"
+        }
+        
         let dayTimePeriodFormatter = NSDateFormatter()
         dayTimePeriodFormatter.dateFormat = "EEEE, M/d/YY"
         return dayTimePeriodFormatter.stringFromDate(date)
