@@ -17,5 +17,6 @@
 #import <Bolts/Bolts.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <UITextView+Placeholder.h>
 
 #endif /* HappySad_Bridging_Header_h */

@@ -10,10 +10,12 @@ import UIKit
 
 class PostViewController: UIViewController, UITextViewDelegate {
 
-    let textColor = UIColor.redColor()
-    let backgroundColor = UIColor.blueColor()
-    let underlineColor = UIColor.greenColor()
     
+    var textColor = UIColor(colorLiteralRed: 207/255, green: 207/255, blue: 207/255, alpha: 1) // Light gray
+    var backgroundColor = UIColor(colorLiteralRed: 32/255, green: 32/255, blue: 32/255, alpha: 1) // Black
+    var underlineColor = UIColor(colorLiteralRed: 74/255, green: 144/255, blue: 226/255, alpha: 1) // Blue
+    var placeholderColor = UIColor(colorLiteralRed: 100/255, green: 100/255, blue: 100/255, alpha: 0.5) // Gray
+
     var post: Post? {
         didSet {
             postView?.post = post
@@ -38,8 +40,16 @@ class PostViewController: UIViewController, UITextViewDelegate {
         self.postView!.sadTextView.backgroundColor = UIColor.clearColor()
 
         self.view.backgroundColor = self.backgroundColor
+        
+        self.postView!.dayLabel.textColor = self.textColor
+
         self.postView!.happyTextView.textColor = self.textColor
+        self.postView!.happyTextView.placeholder = "What was the best moment of your day?"
+        self.postView!.happyTextView.placeholderColor = self.placeholderColor
+        
         self.postView!.sadTextView.textColor = self.textColor
+        self.postView!.sadTextView.placeholder = "What was the worst moment of your day?"
+        self.postView!.sadTextView.placeholderColor = self.placeholderColor
 
         // For autosaving. Lost during the textField -> textView refactor.
 //        happyTextView.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
