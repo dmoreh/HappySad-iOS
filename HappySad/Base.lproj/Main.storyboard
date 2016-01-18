@@ -71,9 +71,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HqA-iu-KUH" firstAttribute="centerY" secondItem="eKo-N7-cHh" secondAttribute="centerY" id="9Js-Ku-fi2"/>
+                            <constraint firstItem="HqA-iu-KUH" firstAttribute="centerY" secondItem="eKo-N7-cHh" secondAttribute="centerY" id="9Js-Ku-fi2">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-52"/>
+                            </constraint>
                             <constraint firstItem="HqA-iu-KUH" firstAttribute="centerX" secondItem="eKo-N7-cHh" secondAttribute="centerX" id="QiR-mP-jlb"/>
+                            <constraint firstItem="HqA-iu-KUH" firstAttribute="top" secondItem="Bjb-Ut-cny" secondAttribute="bottom" constant="33" id="lHz-NB-WAX">
+                                <variation key="heightClass=regular-widthClass=regular" constant="8"/>
+                            </constraint>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="lHz-NB-WAX"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="9Js-Ku-fi2"/>
+                                <include reference="lHz-NB-WAX"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="postView" destination="HqA-iu-KUH" id="bpD-K5-gRL"/>
