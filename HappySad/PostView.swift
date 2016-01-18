@@ -64,5 +64,6 @@ class PostView: UIView {
     @IBAction func saveButtonTapped(sender: UIButton) {
         copyOverStrings()
         delegate?.savePost(post!)
+        self.endEditing(true)
     }
 }
