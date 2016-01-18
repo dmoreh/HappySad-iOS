@@ -15,9 +15,10 @@ protocol PostViewDelegateProtocol {
 
 class PostView: UIView {
     var textColor = UIColor(colorLiteralRed: 207/255, green: 207/255, blue: 207/255, alpha: 1) // Light gray
-    var placeholderColor = UIColor(colorLiteralRed: 100/255, green: 100/255, blue: 100/255, alpha: 0.5) // Gray
+    var placeholderColor = UIColor(colorLiteralRed: 120/255, green: 120/255, blue: 120/255, alpha: 1) // Gray
     var buttonTextColor = UIColor.whiteColor()
-    var highlightColor = UIColor(colorLiteralRed: 74/255, green: 144/255, blue: 226/255, alpha: 1) // Blue
+//    var highlightColor = UIColor(colorLiteralRed: 74/255, green: 144/255, blue: 226/255, alpha: 1) // Blue
+    var highlightColor = UIColor(red: 97/255, green: 187/255, blue: 223/255, alpha: 1) // Blue
 
     var delegate: PostViewDelegateProtocol?
     var post: Post? {
@@ -63,6 +64,12 @@ class PostView: UIView {
     }
     
     func stringFromDate(date: NSDate) -> String {
+        if NSCalendar.currentCalendar().isDateInToday(date) {
+            return "Today"
+        } else if NSCalendar.currentCalendar().isDateInToday(date.dateByAddingTimeInterval(60*60*24)) {
+            return "Yesterday"
+        }
+        
         let dayTimePeriodFormatter = NSDateFormatter()
         dayTimePeriodFormatter.dateFormat = "EEEE, M/d/YY"
         return dayTimePeriodFormatter.stringFromDate(date)
