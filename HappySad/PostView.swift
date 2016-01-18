@@ -14,12 +14,6 @@ protocol PostViewDelegateProtocol {
 }
 
 class PostView: UIView {
-    var textColor = UIColor(colorLiteralRed: 207/255, green: 207/255, blue: 207/255, alpha: 1) // Light gray
-    var placeholderColor = UIColor(colorLiteralRed: 120/255, green: 120/255, blue: 120/255, alpha: 1) // Gray
-    var buttonTextColor = UIColor.whiteColor()
-//    var highlightColor = UIColor(colorLiteralRed: 74/255, green: 144/255, blue: 226/255, alpha: 1) // Blue
-    var highlightColor = UIColor(red: 97/255, green: 187/255, blue: 223/255, alpha: 1) // Blue
-
     var delegate: PostViewDelegateProtocol?
     var post: Post? {
         didSet {
@@ -42,21 +36,6 @@ class PostView: UIView {
         happyTextView.backgroundColor = UIColor.clearColor()
         sadTextView.backgroundColor = UIColor.clearColor()
 
-        dayLabel.textColor = highlightColor
-        
-        happyTextView.tintColor = highlightColor
-        happyTextView.textColor = textColor
-        happyTextView.placeholder = "What was the best moment of your day?"
-        happyTextView.placeholderColor = placeholderColor
-        
-        sadTextView.textColor = textColor
-        sadTextView.tintColor = highlightColor
-        sadTextView.placeholder = "What was the worst moment of your day?"
-        sadTextView.placeholderColor = placeholderColor
-        
-        submitButton.tintColor = buttonTextColor
-        submitButton.backgroundColor = highlightColor
-        
         let submitButtonCenter = submitButton.center
         submitButton.frame.size.width = 100
         submitButton.center = submitButtonCenter

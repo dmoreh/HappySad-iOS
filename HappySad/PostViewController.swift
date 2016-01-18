@@ -9,15 +9,13 @@
 import UIKit
 
 class PostViewController: UIViewController, UITextViewDelegate {
-    var backgroundColor = UIColor(colorLiteralRed: 32/255, green: 32/255, blue: 32/255, alpha: 1) // Black
-    var tintColor = UIColor(colorLiteralRed: 74/255, green: 144/255, blue: 226/255, alpha: 1) // Blue
-
     var post: Post? {
         didSet {
             postView?.post = post
         }
     }
     @IBOutlet var postView: PostView?
+    var colorScheme: ColorScheme = ColorScheme.blackColorScheme()
     var pageIndex: Int?
     var timer: NSTimer?
     var maxWords: Int = NSUserDefaults.standardUserDefaults().integerForKey("maxWords")
@@ -31,7 +29,22 @@ class PostViewController: UIViewController, UITextViewDelegate {
         postView!.happyTextView.delegate = self
         postView!.sadTextView.delegate = self
         
-        view.backgroundColor = backgroundColor
+        view.backgroundColor = colorScheme.backgroundColor
+        
+        postView!.dayLabel.textColor = colorScheme.tintColor
+        postView!.happyTextView.tintColor = colorScheme.tintColor
+        postView!.happyTextView.textColor = colorScheme.textColor
+        postView!.happyTextView.placeholder = "What was the best moment of your day?"
+        postView!.happyTextView.placeholderColor = colorScheme.placeholderColor
+        
+        postView!.sadTextView.textColor = colorScheme.textColor
+        postView!.sadTextView.tintColor = colorScheme.tintColor
+        postView!.sadTextView.placeholder = "What was the worst moment of your day?"
+        postView!.sadTextView.placeholderColor = colorScheme.placeholderColor
+        
+        postView!.submitButton.tintColor = colorScheme.buttonTextColor
+        postView!.submitButton.backgroundColor = colorScheme.tintColor
+
 
         // For autosaving. Lost during the textField -> textView refactor.
 //        happyTextView.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
