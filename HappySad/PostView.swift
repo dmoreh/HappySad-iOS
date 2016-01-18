@@ -19,14 +19,15 @@ class PostView: UIView {
         didSet {
             if let post = post {
                 dayLabel.text = stringFromDate(post.day!)
-                happyTextField.text = post.goodThing
-                sadTextField.text = post.badThing
+                happyTextView.text = post.goodThing
+                sadTextView.text = post.badThing
             }
         }
     }
     @IBOutlet var dayLabel: UILabel!
-    @IBOutlet var happyTextField: UITextField!
-    @IBOutlet var sadTextField: UITextField!
+    @IBOutlet var happyTextView: UITextView!
+    @IBOutlet var sadTextView: UITextView!
+    @IBOutlet var submitButton: UIButton!
     
     func stringFromDate(date: NSDate) -> String {
         let dayTimePeriodFormatter = NSDateFormatter()
@@ -35,9 +36,8 @@ class PostView: UIView {
     }
     
     func copyOverStrings() {
-        print("copyOverStrings")
-        post?.goodThing = happyTextField.text
-        post?.badThing = sadTextField.text
+        post?.goodThing = happyTextView.text
+        post?.badThing = sadTextView.text
     }
     
     @IBAction func saveButtonTapped(sender: UIButton) {

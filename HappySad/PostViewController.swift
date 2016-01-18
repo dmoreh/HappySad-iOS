@@ -8,8 +8,12 @@
 
 import UIKit
 
-class PostViewController: UIViewController, UITextFieldDelegate {
+class PostViewController: UIViewController, UITextViewDelegate {
 
+    let textColor = UIColor.redColor()
+    let backgroundColor = UIColor.blueColor()
+    let underlineColor = UIColor.greenColor()
+    
     var post: Post? {
         didSet {
             postView?.post = post
@@ -19,20 +23,27 @@ class PostViewController: UIViewController, UITextFieldDelegate {
     var pageIndex: Int?
     var timer: NSTimer?
     var maxWords: Int = NSUserDefaults.standardUserDefaults().integerForKey("maxWords")
-
-    @IBOutlet var happyTextField: UITextField!
-    @IBOutlet var sadTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         postView?.delegate = self
         postView?.post = post
         
-        happyTextField.delegate = self
-        sadTextField.delegate = self
+        self.postView!.happyTextView.delegate = self
+        self.postView!.sadTextView.delegate = self
+        
+        // UI
+        self.postView!.backgroundColor = UIColor.clearColor()
+        self.postView!.happyTextView.backgroundColor = UIColor.clearColor()
+        self.postView!.sadTextView.backgroundColor = UIColor.clearColor()
 
-        happyTextField.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
-        sadTextField.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
+        self.view.backgroundColor = self.backgroundColor
+        self.postView!.happyTextView.textColor = self.textColor
+        self.postView!.sadTextView.textColor = self.textColor
+
+        // For autosaving. Lost during the textField -> textView refactor.
+//        happyTextView.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
+//        sadTextView.addTarget(self, action: "resetTimer", forControlEvents: UIControlEvents.EditingChanged)
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,10 +77,12 @@ class PostViewController: UIViewController, UITextFieldDelegate {
         NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSDefaultRunLoopMode)
     }
  
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let newString: String = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
+    // MARK - UITextViewDelegate
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        let newString: String = (textView.text! as NSString).stringByReplacingCharactersInRange(range, withString: text)
         let wordCount = newString.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).count
- 
+        
         return wordCount <= self.maxWords
     }
 }

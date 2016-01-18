@@ -43,7 +43,6 @@
 		3011A2C60F6D05B3BC5ADAA8 /* libPods-HappySad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HappySad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		874B0AFC17750E0B0D79BEA8 /* Pods-HappySad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappySad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HappySad/Pods-HappySad.debug.xcconfig"; sourceTree = "<group>"; };
 		9B6788251C4B02B300EBCFE5 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		9B6788271C4C57A300EBCFE5 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		ED0E47F81C4A61710063CD6F /* HappySad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappySad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0E47FB1C4A61710063CD6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED0E47FD1C4A61710063CD6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,7 +141,6 @@
 				ED19E04C1C4A641000C6465C /* HappySad-Bridging-Header.h */,
 				ED31B6C41C4AEE2400281F30 /* TestTableViewController.swift */,
 				ED31B6C91C4B064000281F30 /* PostView.swift */,
-				9B6788271C4C57A300EBCFE5 /* MyPlayground.playground */,
 			);
 			path = HappySad;
 			sourceTree = "<group>";
