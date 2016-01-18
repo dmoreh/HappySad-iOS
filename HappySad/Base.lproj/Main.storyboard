@@ -55,14 +55,26 @@
                                             <action selector="saveButtonTapped:" destination="HqA-iu-KUH" eventType="touchUpInside" id="ycT-oo-n5T"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zuP-CS-Ve7">
-                                        <rect key="frame" x="17" y="132" width="275" height="1"/>
-                                        <color key="backgroundColor" red="0.3803921569" green="0.73333333329999995" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q9u-Jc-6su">
                                         <rect key="frame" x="17" y="73" width="275" height="1"/>
                                         <color key="backgroundColor" red="0.38039215686274508" green="0.73333333333333328" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zuP-CS-Ve7">
+                                        <rect key="frame" x="17" y="132" width="275" height="1"/>
+                                        <color key="backgroundColor" red="0.3803921569" green="0.73333333329999995" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dzv-PC-KcL">
+                                        <rect key="frame" x="270" y="73" width="22" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2n-K7-1ad">
+                                        <rect key="frame" x="270" y="132" width="22" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -71,7 +83,9 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="dayLabel" destination="p0v-pi-nd7" id="ta1-9D-QTE"/>
+                                    <outlet property="happyCounter" destination="Dzv-PC-KcL" id="ScM-pS-Tve"/>
                                     <outlet property="happyTextView" destination="i7f-b2-Hdh" id="vGw-dQ-KBG"/>
+                                    <outlet property="sadCounter" destination="C2n-K7-1ad" id="fIX-2u-Lie"/>
                                     <outlet property="sadTextView" destination="4Vt-sa-rdz" id="Gds-dn-025"/>
                                     <outlet property="submitButton" destination="zLi-sa-WSM" id="4no-zy-OOO"/>
                                 </connections>

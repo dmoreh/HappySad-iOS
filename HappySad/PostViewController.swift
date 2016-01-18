@@ -44,6 +44,9 @@ class PostViewController: UIViewController, UITextViewDelegate {
         
         postView!.submitButton.tintColor = colorScheme.buttonTextColor
         postView!.submitButton.backgroundColor = colorScheme.tintColor
+        
+        postView!.happyCounter.textColor = colorScheme.textColor
+        postView!.sadCounter.textColor = colorScheme.textColor
 
 
         // For autosaving. Lost during the textField -> textView refactor.
@@ -88,7 +91,16 @@ class PostViewController: UIViewController, UITextViewDelegate {
         let newString: String = (textView.text! as NSString).stringByReplacingCharactersInRange(range, withString: text)
         let wordCount = newString.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).count
         
-        return wordCount <= self.maxWords
+        if wordCount <= self.maxWords {
+            if textView == postView?.happyTextView {
+                postView?.happyCounter.text = "\(11 - wordCount)"
+            } else if textView == postView?.sadTextView {
+                postView?.sadCounter.text = "\(11 - wordCount)"
+            }
+            return true
+        }
+        
+        return false
     }
 }
 

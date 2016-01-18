@@ -20,7 +20,9 @@ class PostView: UIView {
             if let post = post {
                 dayLabel.text = stringFromDate(post.day!)
                 happyTextView.text = post.goodThing
+                happyCounter.text = "\(10 - wordCount(post.goodThing != nil ? post.goodThing! : nil))"
                 sadTextView.text = post.badThing
+                sadCounter.text = "\(10 - wordCount(post.badThing != nil ? post.badThing! : nil))"
             }
         }
     }
@@ -28,6 +30,8 @@ class PostView: UIView {
     @IBOutlet var happyTextView: UITextView!
     @IBOutlet var sadTextView: UITextView!
     @IBOutlet var submitButton: UIButton!
+    @IBOutlet var happyCounter: UILabel!
+    @IBOutlet var sadCounter: UILabel!
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -57,6 +61,13 @@ class PostView: UIView {
     func copyOverStrings() {
         post?.goodThing = happyTextView.text
         post?.badThing = sadTextView.text
+    }
+    
+    func wordCount(s: String?) -> Int {
+        if let s = s {
+            return s.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).count
+        }
+        return 0
     }
     
     @IBAction func saveButtonTapped(sender: UIButton) {
