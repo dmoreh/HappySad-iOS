@@ -20,9 +20,9 @@ class PostView: UIView {
             if let post = post {
                 dayLabel.text = stringFromDate(post.day!)
                 happyTextView.text = post.goodThing
-                happyCounter.text = "\(10 - wordCount(post.goodThing != nil ? post.goodThing! : nil))"
+                happyCounter.text = "\(10 - wordCount(post.goodThing))"
                 sadTextView.text = post.badThing
-                sadCounter.text = "\(10 - wordCount(post.badThing != nil ? post.badThing! : nil))"
+                sadCounter.text = "\(10 - wordCount(post.badThing))"
             }
         }
     }
@@ -46,6 +46,11 @@ class PostView: UIView {
         submitButton.frame.size.width = 100
         submitButton.center = submitButtonCenter
         submitButton.layer.cornerRadius = 15
+        
+        
+//        UIBaselineAdjustment
+
+//        self.happyTextView.lastBaselineAnchor = 0
     }
     
     func stringFromDate(date: NSDate) -> String {
